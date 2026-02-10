@@ -4,6 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sabrina Intimité | Prazer & Sensualidade</title>
+    
+    <!-- Favicon de beijo 💋 -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💋</text></svg>">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💋</text></svg>">
+    
+    <!-- Meta tags para redes sociais -->
+    <meta name="description" content="Sabrina Intimité - Produtos eróticos exclusivos para transformar seus momentos íntimos em experiências inesquecíveis de prazer.">
+    <meta name="theme-color" content="#d4145a">
+    <meta property="og:title" content="Sabrina Intimité | Prazer & Sensualidade">
+    <meta property="og:description" content="Produtos eróticos exclusivos selecionados por Sabrina. Entrega 100% discreta.">
+    <meta property="og:type" content="website">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Questrial&display=swap" rel="stylesheet">
@@ -1290,6 +1301,61 @@
             }
         }
 
+        /* Audio Control Button */
+        .audio-control {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            width: auto;
+            padding: 12px 18px;
+            background: linear-gradient(135deg, rgba(107, 24, 57, 0.9), rgba(212, 20, 90, 0.9));
+            border: 1px solid var(--hot-pink);
+            border-radius: 50px;
+            color: white;
+            font-family: 'Questrial', sans-serif;
+            font-size: 0.85rem;
+            cursor: pointer;
+            z-index: 9997;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 5px 20px rgba(212, 20, 90, 0.3);
+        }
+
+        .audio-control:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 30px rgba(212, 20, 90, 0.5);
+        }
+
+        .audio-control.playing {
+            background: linear-gradient(135deg, rgba(212, 20, 90, 0.95), rgba(183, 110, 121, 0.95));
+            animation: pulse-audio 2s infinite;
+        }
+
+        @keyframes pulse-audio {
+            0%, 100% { box-shadow: 0 5px 20px rgba(212, 20, 90, 0.4); }
+            50% { box-shadow: 0 5px 35px rgba(212, 20, 90, 0.7); }
+        }
+
+        .audio-icon {
+            font-size: 1.2rem;
+        }
+
+        @media (max-width: 768px) {
+            .audio-control {
+                bottom: 90px;
+                right: 20px;
+                padding: 10px 14px;
+                font-size: 0.75rem;
+            }
+
+            .audio-icon {
+                font-size: 1rem;
+            }
+        }
+
         /* Cursor effect */
         .cursor-glow {
             position: fixed;
@@ -1315,6 +1381,17 @@
             </div>
         </div>
     </div>
+
+    <!-- Audio Player - Música de fundo -->
+    <audio id="bgMusic" loop preload="auto">
+        <source src="audio.mp3" type="audio/mpeg">
+    </audio>
+    
+    <!-- Audio Control Button -->
+    <button class="audio-control" id="audioBtn" onclick="toggleAudio()" title="Clique para ativar o som">
+        <span class="audio-icon" id="audioIcon">🔇</span>
+        <span class="audio-text" id="audioText">Ativar Som</span>
+    </button>
 
     <!-- WhatsApp Floating Button -->
     <a href="https://wa.me/5511992206919?text=Ol%C3%A1%20Sabrina!%20Vim%20pelo%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20os%20produtos%20%F0%9F%94%A5" 
@@ -1383,7 +1460,7 @@
             <div class="carousel-track" id="carouselTrack">
                 <!-- Produto 1 - Vibrador -->
                 <a class="carousel-item" href="https://wa.me/5511992206919?text=Ol%C3%A1%20Sabrina!%20%F0%9F%A6%8B%20Tenho%20interesse%20no%20*Vibrador%20Butterfly*%20por%20R%24189.%20Pode%20me%20dar%20mais%20informa%C3%A7%C3%B5es%3F" target="_blank" rel="noopener">
-                    <img src="https://images.unsplash.com/photo-1616530940355-351fabd9524b?w=400&h=300&fit=crop" alt="Vibrador Premium" loading="lazy">
+                    <img src="https://thecoldlady.com/cdn/shop/collections/2222.jpg?v=1746885221" alt="Vibrador Premium" loading="lazy">
                     <div class="carousel-item-content">
                         <h3>Vibrador Butterfly</h3>
                         <p class="price">R$ 189 <small>R$ 259</small></p>
@@ -1392,7 +1469,7 @@
                 </a>
                 <!-- Produto 2 - Lingerie -->
                 <a class="carousel-item" href="https://wa.me/5511992206919?text=Ol%C3%A1%20Sabrina!%20%F0%9F%96%A4%20Tenho%20interesse%20na%20*Lingerie%20Renda%20Francesa*%20por%20R%24159.%20Pode%20me%20dar%20mais%20informa%C3%A7%C3%B5es%3F" target="_blank" rel="noopener">
-                    <img src="https://images.unsplash.com/photo-1617331721458-bd3bd3f9c7f8?w=400&h=300&fit=crop" alt="Lingerie Sensual" loading="lazy">
+                    <img src="lingerie.png" alt="Lingerie Sensual" loading="lazy">
                     <div class="carousel-item-content">
                         <h3>Lingerie Renda Francesa</h3>
                         <p class="price">R$ 159 <small>R$ 229</small></p>
@@ -1401,7 +1478,7 @@
                 </a>
                 <!-- Produto 3 - Óleos -->
                 <a class="carousel-item" href="https://wa.me/5511992206919?text=Ol%C3%A1%20Sabrina!%20%F0%9F%8C%B9%20Tenho%20interesse%20no%20*Kit%20Massagem%20Sensual*%20por%20R%24129.%20Pode%20me%20dar%20mais%20informa%C3%A7%C3%B5es%3F" target="_blank" rel="noopener">
-                    <img src="https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=400&h=300&fit=crop" alt="Kit Massagem" loading="lazy">
+                    <img src="https://dynamic.cdnlive.com.br/1000x1500/uploads/588/produto/17642615472858_zoom/jpeg/kit-de-massagem-.jpeg" alt="Kit Massagem Sensual" loading="lazy">
                     <div class="carousel-item-content">
                         <h3>Kit Massagem Sensual</h3>
                         <p class="price">R$ 129 <small>R$ 179</small></p>
@@ -1410,7 +1487,7 @@
                 </a>
                 <!-- Produto 4 - Velas -->
                 <a class="carousel-item" href="https://wa.me/5511992206919?text=Ol%C3%A1%20Sabrina!%20%F0%9F%94%A5%20Tenho%20interesse%20na%20*Vela%20de%20Massagem%20Hot*%20por%20R%2479.%20Pode%20me%20dar%20mais%20informa%C3%A7%C3%B5es%3F" target="_blank" rel="noopener">
-                    <img src="https://images.unsplash.com/photo-1602607535513-ba56a07dbdc2?w=400&h=300&fit=crop" alt="Vela Aromática" loading="lazy">
+                    <img src="vela-massagem.png" alt="Vela de Massagem Hot" loading="lazy">
                     <div class="carousel-item-content">
                         <h3>Vela de Massagem Hot</h3>
                         <p class="price">R$ 79 <small>R$ 119</small></p>
@@ -1419,7 +1496,7 @@
                 </a>
                 <!-- Produto 5 - Acessórios -->
                 <a class="carousel-item" href="https://wa.me/5511992206919?text=Ol%C3%A1%20Sabrina!%20%F0%9F%8E%80%20Tenho%20interesse%20no%20*Kit%20Bondage%20Soft*%20por%20R%24199.%20Pode%20me%20dar%20mais%20informa%C3%A7%C3%B5es%3F" target="_blank" rel="noopener">
-                    <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=400&h=300&fit=crop" alt="Acessórios Íntimos" loading="lazy">
+                    <img src="https://images.pexels.com/photos/6621462/pexels-photo-6621462.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" alt="Kit Bondage" loading="lazy">
                     <div class="carousel-item-content">
                         <h3>Kit Bondage Soft</h3>
                         <p class="price">R$ 199 <small>R$ 279</small></p>
@@ -1428,7 +1505,7 @@
                 </a>
                 <!-- Produto 6 - Fantasia -->
                 <a class="carousel-item" href="https://wa.me/5511992206919?text=Ol%C3%A1%20Sabrina!%20%F0%9F%A9%BA%20Tenho%20interesse%20na%20*Fantasia%20Enfermeira*%20por%20R%24149.%20Pode%20me%20dar%20mais%20informa%C3%A7%C3%B5es%3F" target="_blank" rel="noopener">
-                    <img src="https://images.unsplash.com/photo-1558171813-4c088753af8f?w=400&h=300&fit=crop" alt="Fantasia" loading="lazy">
+                    <img src="https://cdn.dlojavirtual.com/static1/106875/sku/fantasias-e-lingerie-fantasia-sensual-fantasia-enfermeira-de-plantao--p-1729270373842.jpg" alt="Fantasia Enfermeira" loading="lazy">
                     <div class="carousel-item-content">
                         <h3>Fantasia Enfermeira</h3>
                         <p class="price">R$ 149 <small>R$ 199</small></p>
@@ -1437,7 +1514,7 @@
                 </a>
                 <!-- Produto 7 - Gel -->
                 <a class="carousel-item" href="https://wa.me/5511992206919?text=Ol%C3%A1%20Sabrina!%20%F0%9F%8D%93%20Tenho%20interesse%20no%20*Gel%20Beij%C3%A1vel%20Morango*%20por%20R%2449.%20Pode%20me%20dar%20mais%20informa%C3%A7%C3%B5es%3F" target="_blank" rel="noopener">
-                    <img src="https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=400&h=300&fit=crop" alt="Gel Estimulante" loading="lazy">
+                    <img src="https://images.pexels.com/photos/3685530/pexels-photo-3685530.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" alt="Gel Beijável" loading="lazy">
                     <div class="carousel-item-content">
                         <h3>Gel Beijável Morango</h3>
                         <p class="price">R$ 49 <small>R$ 79</small></p>
@@ -1446,7 +1523,7 @@
                 </a>
                 <!-- Produto 8 - Calcinha Vibratória -->
                 <a class="carousel-item" href="https://wa.me/5511992206919?text=Ol%C3%A1%20Sabrina!%20%F0%9F%94%A5%20Tenho%20interesse%20na%20*Calcinha%20Vibrat%C3%B3ria*%20por%20R%24289.%20Pode%20me%20dar%20mais%20informa%C3%A7%C3%B5es%3F" target="_blank" rel="noopener">
-                    <img src="https://images.unsplash.com/photo-1609709295948-17d77cb2a69b?w=400&h=300&fit=crop" alt="Calcinha Vibratória" loading="lazy">
+                    <img src="https://images.pexels.com/photos/6311670/pexels-photo-6311670.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" alt="Calcinha Vibratória" loading="lazy">
                     <div class="carousel-item-content">
                         <h3>Calcinha Vibratória</h3>
                         <p class="price">R$ 289 <small>R$ 399</small></p>
@@ -1586,6 +1663,79 @@
         // Check if already verified
         if (localStorage.getItem('ageVerified') === 'true') {
             document.getElementById('ageModal').classList.add('hidden');
+        }
+
+        // Audio Control
+        const bgMusic = document.getElementById('bgMusic');
+        const audioBtn = document.getElementById('audioBtn');
+        const audioIcon = document.getElementById('audioIcon');
+        const audioText = document.getElementById('audioText');
+        let isPlaying = false;
+        let audioLoaded = false;
+
+        // Configurar volume inicial
+        bgMusic.volume = 0.4;
+
+        // Verificar quando o áudio carregou
+        bgMusic.addEventListener('canplaythrough', function() {
+            audioLoaded = true;
+            console.log('Áudio carregado com sucesso!');
+        });
+
+        bgMusic.addEventListener('error', function(e) {
+            console.log('Erro ao carregar áudio:', e);
+            audioText.textContent = 'Sem áudio';
+        });
+
+        function toggleAudio() {
+            if (isPlaying) {
+                // Pausar
+                bgMusic.pause();
+                audioIcon.textContent = '🔇';
+                audioText.textContent = 'Ativar Som';
+                audioBtn.classList.remove('playing');
+                isPlaying = false;
+            } else {
+                // Tentar tocar
+                audioText.textContent = 'Carregando...';
+                
+                const playPromise = bgMusic.play();
+                
+                if (playPromise !== undefined) {
+                    playPromise.then(() => {
+                        // Sucesso!
+                        audioIcon.textContent = '🔊';
+                        audioText.textContent = 'Som Ligado';
+                        audioBtn.classList.add('playing');
+                        isPlaying = true;
+                    }).catch(err => {
+                        console.log('Erro ao tocar:', err);
+                        audioIcon.textContent = '⚠️';
+                        audioText.textContent = 'Clique aqui';
+                        
+                        // Tentar novamente após interação
+                        setTimeout(() => {
+                            audioIcon.textContent = '🔇';
+                            audioText.textContent = 'Ativar Som';
+                        }, 2000);
+                    });
+                }
+            }
+        }
+
+        // Mostrar botão de áudio após verificação de idade
+        const originalVerifyAge = verifyAge;
+        verifyAge = function() {
+            originalVerifyAge();
+            // Pequeno delay para mostrar o botão
+            setTimeout(() => {
+                audioBtn.style.display = 'flex';
+            }, 500);
+        };
+
+        // Esconder botão de áudio inicialmente se modal estiver visível
+        if (localStorage.getItem('ageVerified') !== 'true') {
+            audioBtn.style.display = 'none';
         }
 
         // Cursor Glow Effect
